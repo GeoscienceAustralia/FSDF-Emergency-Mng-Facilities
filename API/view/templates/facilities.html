@@ -1,0 +1,81 @@
+
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+    <style>
+        dt {font-weight: bold;}
+    </style>
+
+
+
+    <dl>
+        <dt><i><a title="{{ hasName['comment'] }}" href="{{ hasName['uri'] }}">{{ hasName['label'] }}</a></i></dt>
+        <dd><h2>{{ hasName['value'] }}</h2></dd>
+
+        <h4>SA1 {{ id }}</h4>
+        <p><code>{{ uri }}</code></p>
+
+
+        <iframe id="inlineFrameMap"
+            title="Map for {{ hasName['value'] }}"
+            width="100%"
+            height="300"
+            src="{{ url_for('controller.show_map') }}?name={{ hasName['value']|urlencode }}&coords={{ coordinate_list }}&geom_type={{ geometry_type }}">
+
+        </iframe>
+
+
+
+         <table class="pretty">
+            <tr><th>Property</th><th>Value</th></tr>
+            <tr><td><strong>Feature Subtype</strong></td><td>{{ featuresubtype }}</td></tr>
+            <tr><td><strong>Feature Date</strong></td><td>{{ feature_date }}</td></tr>
+            <tr><td><strong>Feature Source</strong></td><td>{{ feature_source }}</td></tr>
+            <tr><td><strong>Attribute Date</strong></td><td>{{ attribute_date }}</td></tr>
+            <tr><td><strong>Attribute Source</strong></td><td>{{ attribute_source }}</td></tr>
+            <tr><td><strong>Source UFI</strong></td><td>{{ source_ufi }}</td></tr>
+            <tr><td><strong>Source Jurisdiction</strong></td><td>{{ source_jurisdiction }}</td></tr>
+            <tr><td><strong>Custodian Agency</strong></td><td>{{ custodian_agency }}</td></tr>
+            <tr><td><strong>Custodian Licensing</strong></td><td>{{ custodian_licensing }}</td></tr>
+            <tr><td><strong>Loading Date</strong></td><td>{{ loading_date }}</td></tr>
+            <tr><td><strong>Building Id</strong></td><td>{{ building_id }}</td></tr>
+            <tr><td><strong>Main Function</strong></td><td>{{ main_function }}</td></tr>
+            <tr><td><strong>Operational Status</strong></td><td>{{ operationalstatus }}</td></tr>
+            <tr><td><strong>Height</strong></td><td>{{ height }}</td></tr>
+            <tr><td><strong>Address</strong></td><td>{{ address }}</td></tr>
+            <tr><td><strong>Suburb</strong></td><td>{{ suburb }}</td></tr>
+            <tr><td><strong>Local Construction Type</strong></td><td>{{ local_construction_type }}</td></tr>
+            <tr><td><strong>Local Year Built</strong></td><td>{{ local_year_built }}</td></tr>
+            <tr><td><strong>State</strong></td><td>{{ state }}</td></tr>
+            <tr><td><strong>Category</strong></td><td>{{ category }}</td></tr>
+            <tr><td><strong>Facility Type</strong></td><td>{{ facility_type }}</td></tr>
+            <tr><td><strong>X Coordinate in WGS84</strong></td><td>{{ xcoord84 }}</td></tr>
+            <tr><td><strong>Y Coordinate in WGS84</strong></td><td>{{ ycoord84 }}</td></tr>
+            <tr><td><strong>URI</strong></td><td>{{ uri_facility }}</td></tr>
+            <tr><td><strong>AusPIX URI</strong></td><td>{{ uri_auspix }}</td></tr>
+            <tr><td><strong>AusPIX Cell Area (Square meter)</strong></td><td>{{ cellsarea_m2 }}</td></tr>
+            <tr><td><strong>AusPIX DGGS location</strong></td>
+                <td> <ul>
+                    {%- for item in ausPIX_DGGS -%}
+                    <a href="{{ item['uri'] }}">{{ item['label'] }}  </a>
+                     {%- endfor -%}
+                    </ul>
+                </td>
+            </tr>
+            <tr><td><strong>Geometry(WKT)</strong></td><td>{{ wkt }}</td></tr>
+        </table>
+
+    </dl>
+    <br>
+    <p>
+        <dt>Alternative profiles and formats for this resource:</dt>
+    </p>
+    <ul>
+        <li><a href="?_profile=alt">Alternate profiles</a></li>
+    </ul>
+{% endblock %}
+
+
+
