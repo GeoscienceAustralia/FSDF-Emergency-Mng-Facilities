@@ -20,8 +20,8 @@ DGGS_uri = 'https://fsdf.org.au/dataset/auspix-dggs/ausPIX/'
 from rhealpixdggs import dggs
 rdggs = dggs.RHEALPixDGGS()
 
-TABLE_NAME = 'Facilities_all84_with_dggs'
-NAME_FIELD = 'name'
+TABLE_NAME = 'facilities_all84_with_dggs'
+NAME_FIELD = 'f_name'
 
 
 class Facilities(Renderer):
@@ -51,8 +51,8 @@ class Facilities(Renderer):
 
         q = '''
                SELECT
-                   "name",
-                   "AusPIX_DGGS",
+                   "f_name",
+                   "auspix_dggs",
                    "uri_auspix",
                    "cellsarea_m2",                   
                    "featuresubtype",
